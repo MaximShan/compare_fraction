@@ -1,4 +1,5 @@
-#include <iostream>
+﻿#include <iostream>
+#include <compare>
 
 class Fraction
 {
@@ -13,33 +14,19 @@ public:
 		denominator_ = denominator;
 	}
 
-	bool operator==(const Fraction& other) {
-		return numerator_ * other.denominator_ == other.numerator_ * denominator_;
+	auto operator<=>(const Fraction& other) const {
+		return (numerator_ * other.denominator_) <=> (other.numerator_ * denominator_);
 	}
 
-	bool operator!= (const Fraction & other) {
-		return numerator_ * other.denominator_ != other.numerator_ * denominator_;
-	}
+	bool operator==(const Fraction& other) const = default;
 
-	bool operator<(const Fraction& other) {
-		return numerator_ * other.denominator_ < other.numerator_ * denominator_;
-	}
-
-	bool operator>(const Fraction& other) {
-		return numerator_ * other.denominator_ > other.numerator_ * denominator_;
-	}
-
-	bool operator<=(const Fraction& other) {
-		return numerator_ * other.denominator_ <= other.numerator_ * denominator_;
-	}
-
-	bool operator>=(const Fraction& other) {
-		return numerator_ * other.denominator_ >= other.numerator_ * denominator_;
-	}
+	
 };
 
 int main()
 {
+
+	
 	Fraction f1(4, 3);
 	Fraction f2(6, 11);
 
